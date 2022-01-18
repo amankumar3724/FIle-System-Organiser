@@ -64,4 +64,19 @@ function organizeFn(dirpath) {
       console.log("Please Enter a valid Path");
     }
   }
+
+  organizeHelper(dirpath, destPath)
+}
+
+// we are writing this function to categorized our files
+function organizeHelper(src,dest)
+{
+    let childNames = fs.readdirSync(src) //get all files and folder in the src
+    //console.log(childNames)
+    for(let i = 0; i < childNames.length; i++)
+    {
+        let childAddress = path.join(src, childNames[i])
+        let isFile = fs.lstatSync(childAddress).isFile()
+        console.log(childAddress + ' ' + isFile)
+    }
 }
