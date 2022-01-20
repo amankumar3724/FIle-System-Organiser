@@ -40,6 +40,7 @@ let command = inputArr[0];
 switch (command) {
   case "tree":
     console.log("Tree Implemented");
+    treeFn(inputArr[1]);
     break;
   case "organize":
     organizeFn(inputArr[1]);
@@ -147,4 +148,20 @@ function sendFiles(srcFilePath , dest , fileCategory){
 
 
     console.log(fileName + "is copied to" + fileCategory)
+}
+
+function treeFn(dirpath){
+  if(dirpath==undefined){
+    console.log("Please enter a valid command")
+  }
+  else{
+    let doesExist = fs.existsSync(dirpath)
+    if(dirpath==true){
+      treeHelper(dirpath, " ")
+    }
+  }
+}
+
+function treeHelper(targetPath, indent){
+  
 }
