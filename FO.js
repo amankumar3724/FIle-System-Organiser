@@ -36,10 +36,8 @@ let types = {
 //[Node FO.js tree folderpath]
 
 let command = inputArr[0];
-
 switch (command) {
   case "tree":
-    console.log("Tree Implemented");
     treeFn(inputArr[1]);
     break;
   case "organize":
@@ -58,8 +56,7 @@ function helpfn() {
   console.log(`List of all the Commands-
                     1) Tree Command - node FO.js tree <dirname>
                     2) Organize Command- node FO.js organize <dirname>
-                    3) Help Command - node FO.js help
-                          Thank You`);
+                    3) Help Command - node FO.js help`);
 }
 
 function organizeFn(dirpath) {
@@ -113,16 +110,12 @@ function getCategory(name){
     let ext = path.extname(name)
     ext = ext.slice(1)  // we will take out the extension names of the files 
     //console.log(ext)
-
-
     for(let type in types){
            let cTypeArr = types[type]
            //console.log(cTypeArr)
-
            for(let i=0 ; i<cTypeArr.length ;i++){
                   if(ext == cTypeArr[i])
                   // we matched the extensions with the values presnet in ctypeArr
-
                   return type
            }
     }
@@ -131,22 +124,13 @@ return 'others'
 
 function sendFiles(srcFilePath , dest , fileCategory){
     let catPath = path.join(dest, fileCategory)
-
-
     if(fs.existsSync(catPath)==false){ // checking for category folder path 
            fs.mkdirSync(catPath)
     }
-
-
     let fileName = path.basename(srcFilePath) /// we took out the names of the files
     let destFilePath = path.join(catPath , fileName) // here we created a path for the files in category folders
-
-
     fs.copyFileSync(srcFilePath , destFilePath) // copied files from src to dest
-
     fs.unlinkSync(srcFilePath) // deleted the files from src
-
-
     console.log(fileName + "is copied to" + fileCategory)
 }
 
