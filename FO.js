@@ -140,7 +140,7 @@ function treeFn(dirpath){
   }
   else{
     let doesExist = fs.existsSync(dirpath)
-    if(dirpath==true){
+    if(doesExist==true){
       treeHelper(dirpath, " ")
     }
   }
