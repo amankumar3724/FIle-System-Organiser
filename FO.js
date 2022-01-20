@@ -163,5 +163,14 @@ function treeFn(dirpath){
 }
 
 function treeHelper(targetPath, indent){
+  let isFile = fs.lstatSync(targetPath).isFile()
   
+  if(isFile==true){
+    let fileName = path.basename(targetPath)
+    console.log(indent + "├──" + fileName)
+  }
+  else{
+    let dirName = path.basename(targetPath)
+    console.log(indent + "└──" + dirName)
+  }
 }
